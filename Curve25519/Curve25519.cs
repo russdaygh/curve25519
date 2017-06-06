@@ -76,7 +76,7 @@ namespace Elliptic
         public static byte[] CreateRandomPrivateKey()
         {
             var privateKey = new byte[32];
-            RNGCryptoServiceProvider.Create().GetBytes(privateKey);
+            RandomNumberGenerator.Create().GetBytes(privateKey);
             ClampPrivateKeyInline(privateKey);
 
             return privateKey;
@@ -100,7 +100,7 @@ namespace Elliptic
             if (privateKey == null) throw new ArgumentNullException("privateKey");
             if (privateKey.Length != 32) throw new ArgumentException(String.Format("privateKey must be 32 bytes long (but was {0} bytes long)", privateKey.Length), "privateKey");
 
-            RNGCryptoServiceProvider.Create().GetBytes(privateKey);
+            RandomNumberGenerator.Create().GetBytes(privateKey);
             ClampPrivateKeyInline(privateKey);
 
             Core(publicKey, signingKey, privateKey, null);
