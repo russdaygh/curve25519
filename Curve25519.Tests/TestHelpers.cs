@@ -39,7 +39,7 @@ namespace Elliptic.Tests
             bitArray.Set(bitToToggle, !bit);
 
             var result = new byte[buffer.Length];
-            bitArray.CopyTo(result, 0);
+            ((ICollection)bitArray).CopyTo(result, 0);
             return result;
         }
     }
